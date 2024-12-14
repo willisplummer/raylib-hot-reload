@@ -1,0 +1,26 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/clang",
+      "-c",
+      "-I../../raylib/src",
+      "-framework",
+      "CoreVideo",
+      "-framework",
+      "IOKit",
+      "-framework",
+      "Cocoa",
+      "-framework",
+      "GLUT",
+      "-framework",
+      "OpenGL",
+      "../lib/libraylib.a",
+      "-o",
+      "mygame",
+      "mygame.c"
+    ],
+    "directory": "/Users/willisplummer/code/raylib-hot-reload/src",
+    "file": "/Users/willisplummer/code/raylib-hot-reload/src/main.c",
+    "output": "/Users/willisplummer/code/raylib-hot-reload/src/main"
+  }
+]
