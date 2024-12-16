@@ -53,6 +53,7 @@ int main(void) {
 
   while (!WindowShouldClose()) {
 
+    // TODO: can we make this detect if the lib file has been modified?
     if (IsKeyPressed(KEY_R))
       do_reload();
 
