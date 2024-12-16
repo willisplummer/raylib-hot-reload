@@ -18,6 +18,8 @@
 #include "raylib.h"
 #include "reload.h"
 
+#include <sys/stat.h>
+
 int dbg = 1;
 
 init_gamestate_t init_gamestate = NULL;
@@ -39,6 +41,7 @@ int do_reload() {
 int main(void) {
   const int screenWidth = 800;
   const int screenHeight = 450;
+  struct stat prev_stat, current_stat;
 
   if (do_reload() != 0) {
     return 1;
@@ -51,11 +54,22 @@ int main(void) {
 
   SetTargetFPS(60);
 
-  while (!WindowShouldClose()) {
+  if (stat("libgamecode.so", &prev_stat) < 0) {
+    perror("stat");
+    return 1;
+  }
 
-    // TODO: can we make this detect if the lib file has been modified?
-    if (IsKeyPressed(KEY_R))
+  while (!WindowShouldClose()) {
+    if (stat("libgamecode.so", &current_stat) < 0) {
+      perror("stat");
+      return 1;
+    }
+
+    if (prev_stat.st_mtime != current_stat.st_mtime) {
+      printf("File modified\n");
+      prev_stat = current_stat;
       do_reload();
+    }
 
     update_gamestate(state);
 
