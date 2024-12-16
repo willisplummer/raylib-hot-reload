@@ -12,12 +12,25 @@ cmake --build .
 ```
 
 ## Run
-After making changes build and run with:
+in one terminal window:
 ```
 cd build
-cmake --build .
 ./my-raylib-starter
 ```
+
+## Watch for changes
+in another:
+```
+cd build
+make watch
+```
+
+Then when you make changes in game.c, the library will automatically be rebuilt and you can press `r` in the game window to load in the latest
+
+
+## TODO
+Ideally, you wouldn't have to press `r` to load in the game state, instead, we'd detect when the libgamecode.so had changed and reload it automatically in main.c
+
 
 ## Notes
 `dll` is dynamically load library
