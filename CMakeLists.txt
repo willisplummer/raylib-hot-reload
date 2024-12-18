@@ -41,9 +41,11 @@ target_link_libraries(gamecode raylib)
 add_executable(${PROJECT_NAME} src/main.c src/reload.c)
 target_link_libraries(${PROJECT_NAME} raylib)
 
-target_link_libraries(${PROJECT_NAME} "-framework IOKit")
-target_link_libraries(${PROJECT_NAME} "-framework Cocoa")
-target_link_libraries(${PROJECT_NAME} "-framework OpenGL")
+if (APPLE)
+    target_link_libraries(${PROJECT_NAME} "-framework IOKit")
+    target_link_libraries(${PROJECT_NAME} "-framework Cocoa")
+    target_link_libraries(${PROJECT_NAME} "-framework OpenGL")
+endif()
 
 add_custom_target(watch
     COMMAND ${CMAKE_COMMAND} -E echo "Watching for changes using fswatch..."
