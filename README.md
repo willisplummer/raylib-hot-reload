@@ -1,7 +1,7 @@
 # Raylib Hot Reload Starter
 
 ## Setup
-update project details in CMakeLists.txt then:
+update project details in [CMakeLists.txt](https://github.com/willisplummer/raylib-hot-reload/blob/main/CMakeLists.txt#L7-L11) then:
 ```
 brew install cmake
 cmake -S . -B build
