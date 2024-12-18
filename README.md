@@ -1,5 +1,8 @@
-# Raylib Hot Reload Starter
+# TODO
+there's currently a weird bug where the first time you setup build it will always fail to run the program with a seg fault until you make an edit to the file and then rebuild. (to reproduce, delete `build` directory, then re-run setup commands. it will fail. then make an arbitrary edit to the cmakelists file and save try `cmake --build .` from within build dir and it should now work when you run the executable.
 
+
+# Raylib Hot Reload Starter
 This is mainly just a copy of [@seletz's project](https://github.com/seletz/raylib-hot-code-reload-c-example) at this point, but it works on Mac
 
 ## Setup
