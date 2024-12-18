@@ -1,39 +1,25 @@
-# TODO
-there's currently a weird bug where the first time you setup build it will always fail to run the program with a seg fault until you make an edit to the file and then rebuild. (to reproduce, delete `build` directory, then re-run setup commands. it will fail. then make an arbitrary edit to the cmakelists file and save try `cmake --build .` from within build dir and it should now work when you run the executable.
-
-
 # Raylib Hot Reload Starter
-This is mainly just a copy of [@seletz's project](https://github.com/seletz/raylib-hot-code-reload-c-example) at this point, but it works on Mac
 
 ## Setup
+update project details in CMakeLists.txt then:
 ```
 brew install cmake
-mkdir build
-cd build
-cmake ..
-cmake --build .
+cmake -S . -B build
+cmake --build build
 ```
 
-## Run
-in one terminal window:
+## Run The Executable
 ```
 cd build
-./my-raylib-starter
+make run
 ```
 
-## Watch for changes
-in another:
+## Run and Watch
 ```
 cd build
 make watch
 ```
-
-Then when you make changes in game.c, the library will automatically be rebuilt and you can press `r` in the game window to load in the latest
-
-
-## TODO
-Ideally, you wouldn't have to press `r` to load in the game state, instead, we'd detect when the libgamecode.so had changed and reload it automatically in main.c
-
+the exe is launched in background and then changes to `game.c` are automatically built and pulled into the program.
 
 ## Notes
 `dll` is dynamically load library
@@ -50,4 +36,5 @@ Basically, there's a separate module that is loaded into the main program as a d
 - https://seletz.github.io/posts/hotreload-gamecode-in-c
 - https://www.youtube.com/watch?v=Y57ruDOwH1g
 - https://www.youtube.com/watch?v=tOQZlD-0Scc
+
 
